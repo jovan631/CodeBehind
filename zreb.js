@@ -1,12 +1,10 @@
-export class Zreb
-{
-    constructor()
-    {
-        this.sesiri = {
-            D: [],
-            E: [],
-            F: [],
-            G: []
-          };
-    }
+export class Zreb {
+  constructor() {
+    this.sesiri = {
+      D: [],
+      E: [],
+      F: [],
+      G: [],
+    };
+  }
 }

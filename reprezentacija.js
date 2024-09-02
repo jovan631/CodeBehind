@@ -30,16 +30,14 @@ export class Reprezentacija {
     const sortirajTimove = (a, b) => {
       if (b.bodovi !== a.bodovi) return b.bodovi - a.bodovi;
       if (b.kosRazlika !== a.kosRazlika) return b.kosRazlika - a.kosRazlika;
-      return b.kosevi - a.kosevi;
+      return b.datiKosevi - a.datiKosevi;
     };
 
     prvoplasirani.sort(sortirajTimove);
     drugoplasirani.sort(sortirajTimove);
     treceplasirani.sort(sortirajTimove);
 
-    this.rangirani = prvoplasirani
-      .concat(drugoplasirani)
-      .concat(treceplasirani);
+    this.rangirani = [...prvoplasirani, ...drugoplasirani, ...treceplasirani];
   }
 
   pronadjiBoljeg(Tim) {

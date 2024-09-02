@@ -195,18 +195,6 @@ function sortirajNizReprezentacijaUGrupi(grupe) {
         return b.bodovi - a.bodovi;
       }
 
-      const timoviSaIstimPoenima = g.reprezentacijeUGrupi.filter(
-        (team) => team.bodovi === a.bodovi
-      );
-
-      if (timoviSaIstimPoenima.length === 3) {
-        const razlikaUPoenimaA = a.razlikaPoena(timoviSaIstimPoenima);
-        const razlikaUPoenimaB = b.razlikaPoena(timoviSaIstimPoenima);
-        if (razlikaUPoenimaA !== razlikaUPoenimaB) {
-          return razlikaUPoenimaB - razlikaUPoenimaA;
-        }
-      }
-
       if (a.pronadjiBoljeg(b)) {
         return 1;
       } else {

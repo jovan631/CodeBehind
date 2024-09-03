@@ -142,7 +142,6 @@ function olimpijskeIgre(grupe) {
     console.log("\n");
   }
 
-  sortirajNizReprezentacijaUGrupi(grupe);
   zreb(grupe);
 }
 
@@ -188,18 +187,45 @@ function Rezultat(rang1, rang2) {
   return [rezultatTima1, rezultatTima2];
 }
 
-function sortirajNizReprezentacijaUGrupi(grupe) {
+function zreb(grupe) {
   grupe.forEach((g) => {
     g.reprezentacijeUGrupi.sort((a, b) => {
       if (b.bodovi !== a.bodovi) {
         return b.bodovi - a.bodovi;
       }
 
-      if (a.pronadjiBoljeg(b)) {
-        return 1;
-      } else {
-        return -1;
+      const timoviSaIstimBodovima = g.reprezentacijeUGrupi.filter(
+        (tim) => tim.bodovi === a.bodovi
+      );
+
+      if (timoviSaIstimBodovima.length === 2) {
+        const utakmicaAB = a.odigraneUtakmice.find(
+          (utakmica) => utakmica.Opponent === b
+        );
+        const utakmicaBA = b.odigraneUtakmice.find(
+          (utakmica) => utakmica.Opponent === a
+        );
+
+        if (utakmicaAB) {
+          if (utakmicaAB.Result1 > utakmicaAB.Result2) {
+            return -1;
+          } else if (utakmicaAB.Result1 < utakmicaAB.Result2) {
+            return 1;
+          }
+        } else if (utakmicaBA) {
+          if (utakmicaBA.Result1 < utakmicaBA.Result2) {
+            return 1;
+          } else if (utakmicaBA.Result1 > utakmicaBA.Result2) {
+            return -1;
+          }
+        }
       }
+
+      if (b.kosRazlika !== a.kosRazlika) {
+        return b.kosRazlika - a.kosRazlika;
+      }
+
+      return b.datiKosevi - a.datiKosevi;
     });
   });
 
@@ -212,7 +238,7 @@ function sortirajNizReprezentacijaUGrupi(grupe) {
         " (Ime - pobede/porazi/bodovi/postignuti kosevi/primljeni kosevi/kos razlika)::"
     );
     console.log("\n");
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < e.reprezentacijeUGrupi.length; i++) {
       console.log(
         "       " +
           (i + 1) +
@@ -253,19 +279,15 @@ function sortirajNizReprezentacijaUGrupi(grupe) {
   }
 
   console.log("\n");
-}
 
-function zreb(grupe) {
   let preostaleReprezentacije = [];
-
-  for (let grupa of grupe) {
+  grupe.forEach((grupa) => {
     preostaleReprezentacije = preostaleReprezentacije.concat(
       grupa.reprezentacijeUGrupi
     );
-  }
+  });
 
   let reprezentacija = new Reprezentacija();
-
   reprezentacija.dodajIRangiraj(grupe);
 
   let sesir = new Zreb();

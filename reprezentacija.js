@@ -39,15 +39,4 @@ export class Reprezentacija {
 
     this.rangirani = [...prvoplasirani, ...drugoplasirani, ...treceplasirani];
   }
-
-  pronadjiBoljeg(Tim) {
-    const utakmica = this.odigraneUtakmice.find(
-      (utakmica) => Tim === utakmica.Opponent
-    );
-    if (utakmica) {
-      return utakmica.Result2 > utakmica.Result1;
-    }
-
-    return false;
-  }
 }

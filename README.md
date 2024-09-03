@@ -13,10 +13,9 @@ da li je neka reprezentacija pobedila, izgubila ili predala utakmicu. Reprezenta
 zreb: Pamte se timovi D, E , F i G u okviru sesira, koji ce sluziti za zreb fazu takmicenja. 
 
 main: Funkcija procitajGrupe() ucitava podatke iz groups.json fajla i sve grupe su stavljene u niz grupe[]; U okviru te funkcije se poziva funkcija olimpijske igre sa grupama koje smo pokupili iz json fajla. 
-olimpijskeIgre() ce odrediti grupnu fazu, takodje ce pamtiti odigrane utakmice kao i same utakmice koje su odigrane, nad kojima ce se pozvati funkcija dodavanjeInformacijaOTimovima i prikazati grupne faze u 3 kola. Nakon toga se pozivaju
-funkcije sorttirajNizReprezentacijaUGrupi i zreb. Funkcija Rezultat izracunava verovatnocu ishoda rezultata neke utakmice izmedju dve reprezentacije. Najvise se uzima u obzir fiba ranking. 
-sortirajNizReprezentacijaUGrupi ce sortirati reprezentacije u grupi po broju bodova i ispisati ih u konzoli. Takodje ce se tu izbaciti reprezentacije iz svake grupe koje imaju najmanji broj bodova, odnosno poslednje se u grupi.
-Funkcija zreb ce odraditi funkciju dodajIrangiraj i napraviti sesire za eliminacionu fazu.  U toj funkciji ce se odigrati sve utakmice od cetvrtfinala do finala, kao i utakmica za trece mesto.
+olimpijskeIgre() ce odrediti grupnu fazu, takodje ce pamtiti odigrane utakmice kao i same utakmice koje su odigrane, nad kojima ce se pozvati funkcija dodavanjeInformacijaOTimovima i prikazati grupne faze u 3 kola. Nakon toga se poziva
+funkcija zreb(). Funkcija Rezultat izracunava verovatnocu ishoda rezultata neke utakmice izmedju dve reprezentacije. Najvise se uzima u obzir fiba ranking. 
+Funkcija zreb ce prvo sortirati reprezentacije u grupi po broju bodova, kos razlici i datim kosevima, a ukoliko postoje 2 tima sa istim brojem bodova gledace se njihovi medjusobni susreti, i ispisati ih u konzoli. Takodje ce se tu izbaciti reprezentacije iz svake grupe koje imaju najmanji broj bodova, odnosno poslednje se u grupi. Onda ce odraditi funkciju dodajIrangiraj i napraviti sesire za eliminacionu fazu.  U toj funkciji ce se odigrati sve utakmice od cetvrtfinala do finala, kao i utakmica za trece mesto.
 Na kraju maina se poziva funkcija procitajGrupe() koja ce zapravo pokrenuti sve sto je aplikaciji napisano. 
 
 Pokrenuti aplikaciju kucanjem u terminalu npm start. 
